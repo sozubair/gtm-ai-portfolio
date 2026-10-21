@@ -1,0 +1,237 @@
+{
+  "about": "Outbound marketing rules for six EMEA markets. Built from public sources. Not legal advice. Every rule starts unverified until a person reads the source and updates the verification block.",
+  "verification_levels": ["regulator", "statute", "partial", "unverified"],
+  "bases": {
+    "opt_out": "Allowed without consent. Identify yourself, offer an opt out and honour objections.",
+    "consent": "Needs prior consent unless an exception applies.",
+    "presumed_consent": "Needs a concrete, documented reason to expect the recipient wants the contact."
+  },
+  "countries": {
+    "UK": {
+      "name": "United Kingdom",
+      "law": "Privacy and Electronic Communications Regulations 2003 (PECR)",
+      "regulator": "Information Commissioner's Office (ICO)",
+      "screening_lists": ["TPS", "CTPS"],
+      "existing_customer": "Soft opt in for individual subscribers: details collected in a sale or negotiation, similar products, a chance to opt out at collection and in every message.",
+      "rules": {
+        "email_company": {
+          "basis": "opt_out",
+          "summary": "Companies are corporate subscribers. Email is allowed without consent. Name the sender and give a valid opt out address.",
+          "screening": [],
+          "existing_customer_exception": false
+        },
+        "email_sole_trader": {
+          "basis": "consent",
+          "summary": "Sole traders and some partnerships are individual subscribers. Email needs consent or the soft opt in.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "call_company": {
+          "basis": "opt_out",
+          "summary": "Live calls are allowed unless the number is on the CTPS or the company has objected.",
+          "screening": ["CTPS"],
+          "existing_customer_exception": false
+        },
+        "call_sole_trader": {
+          "basis": "opt_out",
+          "summary": "Live calls are allowed unless the number is on the TPS or CTPS or the person has objected.",
+          "screening": ["TPS", "CTPS"],
+          "existing_customer_exception": false
+        }
+      },
+      "sources": [
+        {"title": "ICO: Business to business marketing", "url": "https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/business-to-business-marketing/"}
+      ],
+      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+    },
+    "IE": {
+      "name": "Ireland",
+      "law": "European Communities (Electronic Communications Networks and Services) (Privacy and Electronic Communications) Regulations 2011, S.I. No. 336 of 2011, Regulation 13",
+      "regulator": "Data Protection Commission (DPC)",
+      "screening_lists": ["National Directory Database opt out"],
+      "existing_customer": "Regulation 13(11): details collected in a sale, similar products, a chance to object at collection and in every message, contact within 12 months of the sale.",
+      "rules": {
+        "email_company": {
+          "basis": "opt_out",
+          "summary": "Regulation 13(4): email to a subscriber that is not a natural person is allowed unless it has objected.",
+          "screening": [],
+          "existing_customer_exception": false
+        },
+        "email_sole_trader": {
+          "basis": "consent",
+          "summary": "Treated as consent needed. Regulation 13(2) may allow business email to individuals at a work address. Confirm whether that covers sole traders.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "call_company": {
+          "basis": "opt_out",
+          "summary": "Live calls to a landline are allowed unless the subscriber has objected or recorded a preference in the National Directory Database.",
+          "screening": ["National Directory Database opt out"],
+          "existing_customer_exception": false
+        },
+        "call_sole_trader": {
+          "basis": "opt_out",
+          "mobile_basis": "consent",
+          "summary": "Landline calls are allowed unless the person has objected or opted out in the National Directory Database. Regulation 13(6): calls to a mobile need consent.",
+          "screening": ["National Directory Database opt out"],
+          "existing_customer_exception": false
+        }
+      },
+      "sources": [
+        {"title": "S.I. No. 336/2011 (Irish Statute Book)", "url": "https://www.irishstatutebook.ie/eli/2011/si/336/made/en/print"}
+      ],
+      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+    },
+    "DE": {
+      "name": "Germany",
+      "law": "Gesetz gegen den unlauteren Wettbewerb (UWG) §7",
+      "regulator": "No single regulator. Competitors and consumer associations enforce through the courts. Bundesnetzagentur acts on calls to consumers.",
+      "screening_lists": [],
+      "existing_customer": "§7(3): own address collected in a sale, own similar products, no objection, a clear opt out at collection and in every message.",
+      "rules": {
+        "email_company": {
+          "basis": "consent",
+          "summary": "§7(2): advertising by email needs prior express consent. This applies to B2B email too.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "email_sole_trader": {
+          "basis": "consent",
+          "summary": "§7(2): advertising by email needs prior express consent, including to sole traders.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "call_company": {
+          "basis": "presumed_consent",
+          "summary": "§7(2): calls to other market participants need at least presumed consent. A concrete business reason must exist before the call.",
+          "screening": [],
+          "existing_customer_exception": false
+        },
+        "call_sole_trader": {
+          "basis": "presumed_consent",
+          "summary": "Sole traders called in their business capacity are other market participants. Presumed consent applies.",
+          "screening": [],
+          "existing_customer_exception": false
+        }
+      },
+      "sources": [
+        {"title": "UWG §7 (Gesetze im Internet)", "url": "https://www.gesetze-im-internet.de/uwg_2004/__7.html"}
+      ],
+      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+    },
+    "FR": {
+      "name": "France",
+      "law": "Code des postes et des communications électroniques (CPCE) article L.34-5",
+      "regulator": "Commission nationale de l'informatique et des libertés (CNIL)",
+      "screening_lists": [],
+      "existing_customer": "L.34-5: details collected in a sale, analogous products, a chance to object at collection and in every message.",
+      "rules": {
+        "email_company": {
+          "basis": "opt_out",
+          "summary": "CNIL guidance: email to professionals is allowed without consent if the subject relates to their job and they can object.",
+          "screening": [],
+          "existing_customer_exception": false
+        },
+        "email_sole_trader": {
+          "basis": "opt_out",
+          "summary": "The statute requires consent for individuals. CNIL guidance treats professional addresses as opt out when the subject relates to their job. Confirm this for sole traders.",
+          "screening": [],
+          "existing_customer_exception": false
+        },
+        "call_company": {
+          "basis": "opt_out",
+          "summary": "Live calls to professionals are allowed. Honour objections.",
+          "screening": [],
+          "existing_customer_exception": false
+        },
+        "call_sole_trader": {
+          "basis": "opt_out",
+          "summary": "Calls about their trade are allowed. From 11 August 2026 calls to consumers need prior consent and Bloctel has closed. Confirm a sole trader is called as a professional, not as a consumer.",
+          "screening": [],
+          "existing_customer_exception": false
+        }
+      },
+      "sources": [
+        {"title": "CPCE article L34-5 (Légifrance)", "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006465786"},
+        {"title": "CNIL: email prospecting", "url": "https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique"},
+        {"title": "CNIL: telephone prospecting", "url": "https://www.cnil.fr/fr/prospection-commerciale-par-telephone-hors-automate-dappel-quelles-sont-les-regles"}
+      ],
+      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+    },
+    "NL": {
+      "name": "Netherlands",
+      "law": "Telecommunicatiewet article 11.7",
+      "regulator": "Autoriteit Consument & Markt (ACM)",
+      "screening_lists": [],
+      "existing_customer": "Article 11.7: details collected in a sale, similar products, a chance to object at collection and in every message. For calls, customers from the last three years.",
+      "rules": {
+        "email_company": {
+          "basis": "consent",
+          "summary": "Article 11.7: email marketing needs prior consent. Since 2009 this covers companies too.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "email_sole_trader": {
+          "basis": "consent",
+          "summary": "Article 11.7: email marketing needs prior consent.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "call_company": {
+          "basis": "opt_out",
+          "summary": "Live calls to companies are allowed. Honour objections.",
+          "screening": [],
+          "existing_customer_exception": false
+        },
+        "call_sole_trader": {
+          "basis": "consent",
+          "summary": "Since 1 July 2021 calls to natural persons need consent. Customers from the last three years are an exception. The Bel me niet register has closed.",
+          "screening": [],
+          "existing_customer_exception": true
+        }
+      },
+      "sources": [
+        {"title": "Telecommunicatiewet (wetten.overheid.nl)", "url": "https://wetten.overheid.nl/BWBR0009950/"}
+      ],
+      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+    },
+    "ES": {
+      "name": "Spain",
+      "law": "Ley 34/2002 (LSSI) article 21 and Ley 11/2022 General de Telecomunicaciones (LGTel) article 66",
+      "regulator": "Agencia Española de Protección de Datos (AEPD)",
+      "screening_lists": ["Lista Robinson"],
+      "existing_customer": "LSSI article 21.2: prior contract, own similar products, a simple way to object at collection and in every message.",
+      "rules": {
+        "email_company": {
+          "basis": "consent",
+          "summary": "LSSI article 21: commercial email needs prior express consent. This applies to companies too.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "email_sole_trader": {
+          "basis": "consent",
+          "summary": "LSSI article 21: commercial email needs prior express consent.",
+          "screening": [],
+          "existing_customer_exception": true
+        },
+        "call_company": {
+          "basis": "opt_out",
+          "summary": "LGTel article 66: calls can run on legitimate interest. Screen against Lista Robinson and honour objections.",
+          "screening": ["Lista Robinson"],
+          "existing_customer_exception": false
+        },
+        "call_sole_trader": {
+          "basis": "opt_out",
+          "summary": "LGTel article 66: calls can run on legitimate interest. Screen against Lista Robinson and honour objections.",
+          "screening": ["Lista Robinson"],
+          "existing_customer_exception": false
+        }
+      },
+      "sources": [
+        {"title": "LSSI (BOE)", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758"},
+        {"title": "LGTel (BOE)", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10757"}
+      ],
+      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+    }
+  }
+}

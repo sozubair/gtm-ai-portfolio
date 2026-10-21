@@ -1,0 +1,20 @@
+{
+  "program": "Enterprise executive briefings",
+  "unit": "account",
+  "primary_metric": "Opportunity created within the outcome window",
+  "eligible_units": 800,
+  "baseline_rate": 0.08,
+  "min_detectable_uplift": 0.25,
+  "holdout_share": 0.20,
+  "alpha": 0.05,
+  "power": 0.80,
+  "outcome_window_days": 90,
+  "average_outcome_value": 95000,
+  "currency": "GBP",
+  "touch_rate_of_converters": 0.70,
+  "guardrails": [
+    "No account receives more than one briefing invitation a quarter.",
+    "Account owners approve every invitation before it goes out.",
+    "Win rate on briefed opportunities does not fall below the regional average."
+  ]
+}

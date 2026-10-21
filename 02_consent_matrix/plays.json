@@ -1,0 +1,10 @@
+{
+  "plays": [
+    {"name": "Cold email to target companies", "channel": "email", "recipient": "company"},
+    {"name": "Cold email to sole traders", "channel": "email", "recipient": "sole_trader"},
+    {"name": "Email to companies that opted in", "channel": "email", "recipient": "company", "consent": true},
+    {"name": "Email to existing sole trader customers", "channel": "email", "recipient": "sole_trader", "existing_customer": true},
+    {"name": "Cold call to company switchboards", "channel": "call", "recipient": "company"},
+    {"name": "Cold call to sole trader mobiles", "channel": "call", "recipient": "sole_trader", "mobile": true}
+  ]
+}

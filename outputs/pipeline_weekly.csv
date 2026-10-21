@@ -1,0 +1,65 @@
+week,region,segment,leads,opportunities,pipeline_gbp,days_to_opportunity
+1,UKI,Enterprise,114,20,794300,20.6
+1,UKI,Mid market,372,44,465500,12.6
+1,DACH,Enterprise,103,19,822500,20.9
+1,DACH,Mid market,359,45,482100,12.4
+1,France,Enterprise,80,15,608900,20.6
+1,France,Mid market,263,32,328900,12.3
+1,Nordics,Enterprise,60,11,459100,21.3
+1,Nordics,Mid market,170,21,223000,10.4
+2,UKI,Enterprise,120,23,946000,23.0
+2,UKI,Mid market,419,49,485900,11.1
+2,DACH,Enterprise,104,18,710300,19.3
+2,DACH,Mid market,350,42,478100,12.7
+2,France,Enterprise,78,14,561300,21.1
+2,France,Mid market,251,29,346100,12.0
+2,Nordics,Enterprise,61,12,519800,20.9
+2,Nordics,Mid market,180,21,241100,11.8
+3,UKI,Enterprise,126,22,910900,20.5
+3,UKI,Mid market,408,49,568600,11.6
+3,DACH,Enterprise,101,19,790300,21.7
+3,DACH,Mid market,367,45,482400,10.5
+3,France,Enterprise,86,16,705900,20.4
+3,France,Mid market,274,33,363700,11.4
+3,Nordics,Enterprise,61,11,457900,19.0
+3,Nordics,Mid market,177,21,219400,12.1
+4,UKI,Enterprise,122,22,901100,20.2
+4,UKI,Mid market,411,47,510800,11.7
+4,DACH,Enterprise,100,18,722500,23.6
+4,DACH,Mid market,352,41,434900,12.1
+4,France,Enterprise,81,14,604700,19.3
+4,France,Mid market,254,31,364200,11.9
+4,Nordics,Enterprise,59,11,442200,21.4
+4,Nordics,Mid market,181,22,244900,11.8
+5,UKI,Enterprise,122,21,910700,20.2
+5,UKI,Mid market,389,46,506900,12.5
+5,DACH,Enterprise,99,18,785500,20.9
+5,DACH,Mid market,340,42,467100,10.5
+5,France,Enterprise,78,14,555700,20.1
+5,France,Mid market,247,30,333200,12.1
+5,Nordics,Enterprise,63,11,456700,23.5
+5,Nordics,Mid market,173,21,218800,12.2
+6,UKI,Enterprise,128,23,936200,24.0
+6,UKI,Mid market,393,47,523300,11.0
+6,DACH,Enterprise,103,19,822200,21.4
+6,DACH,Mid market,348,43,413400,11.9
+6,France,Enterprise,81,14,598000,20.8
+6,France,Mid market,260,31,348800,12.3
+6,Nordics,Enterprise,58,10,416900,21.0
+6,Nordics,Mid market,177,22,254600,13.1
+7,UKI,Enterprise,127,24,989500,20.2
+7,UKI,Mid market,395,48,525300,12.7
+7,DACH,Enterprise,105,19,829300,20.5
+7,DACH,Mid market,337,39,423500,10.6
+7,France,Enterprise,81,15,600600,20.6
+7,France,Mid market,272,33,365800,11.8
+7,Nordics,Enterprise,62,11,442000,17.9
+7,Nordics,Mid market,166,20,217700,13.0
+8,UKI,Enterprise,122,21,892200,22.5
+8,UKI,Mid market,525,62,729500,10.7
+8,DACH,Enterprise,97,11,465700,19.6
+8,DACH,Mid market,335,24,276800,12.6
+8,France,Enterprise,81,15,637800,20.0
+8,France,Mid market,276,32,350100,11.9
+8,Nordics,Enterprise,63,11,456900,18.8
+8,Nordics,Mid market,182,22,248300,11.3

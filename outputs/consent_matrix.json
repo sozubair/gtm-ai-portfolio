@@ -1,0 +1,108 @@
+[
+  {
+    "play": "Cold email to target companies",
+    "channel": "email",
+    "recipient": "company",
+    "outcomes": {
+      "UK": "yes",
+      "IE": "yes",
+      "DE": "no",
+      "FR": "yes",
+      "NL": "no",
+      "ES": "no"
+    },
+    "class": "Localise",
+    "localise_in": [
+      "DE",
+      "NL",
+      "ES"
+    ]
+  },
+  {
+    "play": "Cold email to sole traders",
+    "channel": "email",
+    "recipient": "sole_trader",
+    "outcomes": {
+      "UK": "no",
+      "IE": "no",
+      "DE": "no",
+      "FR": "yes",
+      "NL": "no",
+      "ES": "no"
+    },
+    "class": "Localise",
+    "localise_in": [
+      "UK",
+      "IE",
+      "DE",
+      "NL",
+      "ES"
+    ]
+  },
+  {
+    "play": "Email to companies that opted in",
+    "channel": "email",
+    "recipient": "company",
+    "outcomes": {
+      "UK": "yes",
+      "IE": "yes",
+      "DE": "yes",
+      "FR": "yes",
+      "NL": "yes",
+      "ES": "yes"
+    },
+    "class": "Run once for EMEA",
+    "localise_in": []
+  },
+  {
+    "play": "Email to existing sole trader customers",
+    "channel": "email",
+    "recipient": "sole_trader",
+    "outcomes": {
+      "UK": "yes",
+      "IE": "yes",
+      "DE": "yes",
+      "FR": "yes",
+      "NL": "yes",
+      "ES": "yes"
+    },
+    "class": "Run once for EMEA",
+    "localise_in": []
+  },
+  {
+    "play": "Cold call to company switchboards",
+    "channel": "call",
+    "recipient": "company",
+    "outcomes": {
+      "UK": "yes",
+      "IE": "yes",
+      "DE": "no",
+      "FR": "yes",
+      "NL": "yes",
+      "ES": "yes"
+    },
+    "class": "Localise",
+    "localise_in": [
+      "DE"
+    ]
+  },
+  {
+    "play": "Cold call to sole trader mobiles",
+    "channel": "call",
+    "recipient": "sole_trader",
+    "outcomes": {
+      "UK": "yes",
+      "IE": "no",
+      "DE": "no",
+      "FR": "yes",
+      "NL": "no",
+      "ES": "yes"
+    },
+    "class": "Localise",
+    "localise_in": [
+      "IE",
+      "DE",
+      "NL"
+    ]
+  }
+]

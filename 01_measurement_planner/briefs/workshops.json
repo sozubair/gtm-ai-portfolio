@@ -1,0 +1,20 @@
+{
+  "program": "Customer workshops",
+  "unit": "account",
+  "primary_metric": "Opportunity created within the outcome window",
+  "eligible_units": 10000,
+  "baseline_rate": 0.10,
+  "min_detectable_uplift": 0.25,
+  "holdout_share": 0.20,
+  "alpha": 0.05,
+  "power": 0.80,
+  "outcome_window_days": 60,
+  "average_outcome_value": 18000,
+  "currency": "GBP",
+  "touch_rate_of_converters": 0.55,
+  "guardrails": [
+    "Unsubscribe rate in the treated group stays below 0.5%.",
+    "Holdout accounts receive no workshop invitations from any team.",
+    "Sales cycle length in the treated group does not rise by more than 10%."
+  ]
+}
