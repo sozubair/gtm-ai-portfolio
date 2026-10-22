@@ -66,8 +66,9 @@ class StyleTests(unittest.TestCase):
                 yield node
 
         cls.docs["rules.json"] = strip_urls(" ".join(walk(rules)))
-        readme = (_paths.ROOT / "README.md").read_text(encoding="utf-8")
-        cls.docs["README.md"] = strip_urls(prose_from_markdown(readme))
+        for name in ("README.md", "NOTES.md"):
+            text = (_paths.ROOT / name).read_text(encoding="utf-8")
+            cls.docs[name] = strip_urls(prose_from_markdown(text))
         briefs = _paths.ROOT / "01_measurement_planner" / "briefs"
         for brief in briefs.glob("*.json"):
             data = json.loads(brief.read_text(encoding="utf-8"))
