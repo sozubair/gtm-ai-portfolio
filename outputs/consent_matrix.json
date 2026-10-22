@@ -24,7 +24,7 @@
     "recipient": "sole_trader",
     "outcomes": {
       "UK": "no",
-      "IE": "no",
+      "IE": "yes",
       "DE": "no",
       "FR": "yes",
       "NL": "no",
@@ -33,7 +33,6 @@
     "class": "Localise",
     "localise_in": [
       "UK",
-      "IE",
       "DE",
       "NL",
       "ES"

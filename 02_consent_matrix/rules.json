@@ -1,5 +1,5 @@
 {
-  "about": "Outbound marketing rules for six EMEA markets. Built from public sources. Not legal advice. Every rule starts unverified until a person reads the source and updates the verification block.",
+  "about": "Outbound marketing rules for six EMEA markets. Built from public sources. Not legal advice. Each market records how its rules were verified and when.",
   "verification_levels": ["regulator", "statute", "partial", "unverified"],
   "bases": {
     "opt_out": "Allowed without consent. Identify yourself, offer an opt out and honour objections.",
@@ -16,7 +16,7 @@
       "rules": {
         "email_company": {
           "basis": "opt_out",
-          "summary": "Companies are corporate subscribers. Email is allowed without consent. Name the sender and give a valid opt out address.",
+          "summary": "Companies are corporate subscribers. The PECR email rule does not apply to them, so no consent is needed. Name the sender, give a valid opt out address and honour opt outs.",
           "screening": [],
           "existing_customer_exception": false
         },
@@ -28,8 +28,8 @@
         },
         "call_company": {
           "basis": "opt_out",
-          "summary": "Live calls are allowed unless the number is on the CTPS or the company has objected.",
-          "screening": ["CTPS"],
+          "summary": "Live calls are allowed unless the company has objected. Screen against both the TPS and the CTPS, because some businesses register on each.",
+          "screening": ["TPS", "CTPS"],
           "existing_customer_exception": false
         },
         "call_sole_trader": {
@@ -42,7 +42,11 @@
       "sources": [
         {"title": "ICO: Business to business marketing", "url": "https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/business-to-business-marketing/"}
       ],
-      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+      "verification": {
+        "level": "regulator",
+        "checked_on": "2026-10-22",
+        "notes": "ICO business to business marketing guidance. Email to corporate subscribers needs no consent under PECR. Sole traders need consent or the soft opt in. Live B2B calls must be screened against both the TPS and the CTPS."
+      }
     },
     "IE": {
       "name": "Ireland",
@@ -58,21 +62,22 @@
           "existing_customer_exception": false
         },
         "email_sole_trader": {
-          "basis": "consent",
-          "summary": "Treated as consent needed. Regulation 13(2) may allow business email to individuals at a work address. Confirm whether that covers sole traders.",
+          "basis": "opt_out",
+          "summary": "Regulation 13(2): email to an address used mainly for their business, about that business only, falls outside the consent rule in 13(1). Honour objections.",
           "screening": [],
           "existing_customer_exception": true
         },
         "call_company": {
           "basis": "opt_out",
-          "summary": "Live calls to a landline are allowed unless the subscriber has objected or recorded a preference in the National Directory Database.",
+          "mobile_basis": "consent",
+          "summary": "Regulation 13(5): calls are allowed unless the subscriber has objected or opted out in the National Directory Database. Regulation 13(6): calls to a mobile need consent.",
           "screening": ["National Directory Database opt out"],
           "existing_customer_exception": false
         },
         "call_sole_trader": {
           "basis": "opt_out",
           "mobile_basis": "consent",
-          "summary": "Landline calls are allowed unless the person has objected or opted out in the National Directory Database. Regulation 13(6): calls to a mobile need consent.",
+          "summary": "Regulation 13(5): landline calls are allowed unless the person has objected or opted out in the National Directory Database. Regulation 13(6): calls to a mobile need consent.",
           "screening": ["National Directory Database opt out"],
           "existing_customer_exception": false
         }
@@ -80,44 +85,53 @@
       "sources": [
         {"title": "S.I. No. 336/2011 (Irish Statute Book)", "url": "https://www.irishstatutebook.ie/eli/2011/si/336/made/en/print"}
       ],
-      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+      "verification": {
+        "level": "statute",
+        "checked_on": "2026-10-22",
+        "notes": "S.I. 336/2011 Regulation 13. 13(1): consent for email to natural persons. 13(2): carves out email to a business address about that business. 13(4): companies are opt out. 13(5): calls are screened against objections and the National Directory Database. 13(6): mobile calls need consent for every subscriber, companies included. 13(11): customer exception with a 12 month limit."
+      }
     },
     "DE": {
       "name": "Germany",
       "law": "Gesetz gegen den unlauteren Wettbewerb (UWG) §7",
       "regulator": "No single regulator. Competitors and consumer associations enforce through the courts. Bundesnetzagentur acts on calls to consumers.",
       "screening_lists": [],
-      "existing_customer": "§7(3): own address collected in a sale, own similar products, no objection, a clear opt out at collection and in every message.",
+      "existing_customer": "§7(3): address received from a customer in a sale, own similar products, no objection, a clear opt out at collection and in every message.",
       "rules": {
         "email_company": {
           "basis": "consent",
-          "summary": "§7(2): advertising by email needs prior express consent. This applies to B2B email too.",
+          "summary": "§7(2) no. 2: advertising by email needs prior express consent. This applies to B2B email too.",
           "screening": [],
           "existing_customer_exception": true
         },
         "email_sole_trader": {
           "basis": "consent",
-          "summary": "§7(2): advertising by email needs prior express consent, including to sole traders.",
+          "summary": "§7(2) no. 2: advertising by email needs prior express consent, including to sole traders.",
           "screening": [],
           "existing_customer_exception": true
         },
         "call_company": {
           "basis": "presumed_consent",
-          "summary": "§7(2): calls to other market participants need at least presumed consent. A concrete business reason must exist before the call.",
+          "summary": "§7(2) no. 1: calls to other market participants need at least presumed consent. A concrete business reason must exist before the call.",
           "screening": [],
           "existing_customer_exception": false
         },
         "call_sole_trader": {
           "basis": "presumed_consent",
-          "summary": "Sole traders called in their business capacity are other market participants. Presumed consent applies.",
+          "summary": "§7(2) no. 1: sole traders called in their business capacity are other market participants. Presumed consent applies.",
           "screening": [],
           "existing_customer_exception": false
         }
       },
       "sources": [
-        {"title": "UWG §7 (Gesetze im Internet)", "url": "https://www.gesetze-im-internet.de/uwg_2004/__7.html"}
+        {"title": "UWG §7 (Gesetze im Internet)", "url": "https://www.gesetze-im-internet.de/uwg_2004/__7.html"},
+        {"title": "UWG §7 (buzer.de copy of the statute)", "url": "https://www.buzer.de/7_UWG.htm"}
       ],
-      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+      "verification": {
+        "level": "statute",
+        "checked_on": "2026-10-22",
+        "notes": "UWG §7(2) no. 1 for calls: express consent for consumers, at least presumed consent for other market participants. §7(2) no. 2 for email: prior express consent for every recipient. §7(3) for the customer exception. Text read on buzer.de because the official site could not be reached."
+      }
     },
     "FR": {
       "name": "France",
@@ -156,73 +170,81 @@
         {"title": "CNIL: email prospecting", "url": "https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique"},
         {"title": "CNIL: telephone prospecting", "url": "https://www.cnil.fr/fr/prospection-commerciale-par-telephone-hors-automate-dappel-quelles-sont-les-regles"}
       ],
-      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+      "verification": {
+        "level": "partial",
+        "checked_on": "2026-10-22",
+        "notes": "CNIL guidance not confirmed. The Légifrance and CNIL pages could not be loaded, so the opt out rule for professionals still rests on unchecked guidance."
+      }
     },
     "NL": {
       "name": "Netherlands",
       "law": "Telecommunicatiewet article 11.7",
       "regulator": "Autoriteit Consument & Markt (ACM)",
       "screening_lists": [],
-      "existing_customer": "Article 11.7: details collected in a sale, similar products, a chance to object at collection and in every message. For calls, customers from the last three years.",
+      "existing_customer": "Article 11.7(4): details collected from customers in a sale, own similar products, a chance to object at collection and in every message. The three year window for calling customers is not in the statute text. Check ACM guidance.",
       "rules": {
         "email_company": {
           "basis": "consent",
-          "summary": "Article 11.7: email marketing needs prior consent. Since 2009 this covers companies too.",
+          "summary": "Article 11.7(1): email marketing needs prior consent from the end user, companies included. Article 11.7(3): no consent is needed for contact details the company published for this purpose.",
           "screening": [],
           "existing_customer_exception": true
         },
         "email_sole_trader": {
           "basis": "consent",
-          "summary": "Article 11.7: email marketing needs prior consent.",
+          "summary": "Article 11.7(1): email marketing needs prior consent. Article 11.7(3): no consent is needed for contact details the sole trader published for this purpose.",
           "screening": [],
           "existing_customer_exception": true
         },
         "call_company": {
           "basis": "opt_out",
-          "summary": "Live calls to companies are allowed. Honour objections.",
+          "summary": "Article 11.7(2) covers calls to natural persons only. Live calls to companies are allowed. Honour objections.",
           "screening": [],
           "existing_customer_exception": false
         },
         "call_sole_trader": {
           "basis": "consent",
-          "summary": "Since 1 July 2021 calls to natural persons need consent. Customers from the last three years are an exception. The Bel me niet register has closed.",
+          "summary": "Article 11.7(2): calls to natural persons need consent. Article 11.7(3): no consent is needed for a number the sole trader published for this purpose. The Bel me niet register has closed.",
           "screening": [],
           "existing_customer_exception": true
         }
       },
       "sources": [
-        {"title": "Telecommunicatiewet (wetten.overheid.nl)", "url": "https://wetten.overheid.nl/BWBR0009950/"}
+        {"title": "Telecommunicatiewet article 11.7 (wetten.overheid.nl)", "url": "https://wetten.overheid.nl/jci1.3:c:BWBR0009950&hoofdstuk=11&artikel=11.7"}
       ],
-      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+      "verification": {
+        "level": "statute",
+        "checked_on": "2026-10-22",
+        "notes": "Telecommunicatiewet article 11.7. 11.7(1): consent for email, companies included. 11.7(2): consent for calls to natural persons. 11.7(3): exception for contact details published for this purpose. 11.7(4): customer exception. The three year window for calling customers was not found in the statute text."
+      }
     },
     "ES": {
       "name": "Spain",
       "law": "Ley 34/2002 (LSSI) article 21 and Ley 11/2022 General de Telecomunicaciones (LGTel) article 66",
       "regulator": "Agencia Española de Protección de Datos (AEPD)",
       "screening_lists": ["Lista Robinson"],
-      "existing_customer": "LSSI article 21.2: prior contract, own similar products, a simple way to object at collection and in every message.",
+      "existing_customer": "LSSI article 21.2: prior contract, data obtained lawfully, own similar products, a simple free way to object at collection and in every message.",
       "rules": {
         "email_company": {
           "basis": "consent",
-          "summary": "LSSI article 21: commercial email needs prior express consent. This applies to companies too.",
+          "summary": "LSSI article 21.1: commercial email needs a prior request or express consent. This applies to companies too.",
           "screening": [],
           "existing_customer_exception": true
         },
         "email_sole_trader": {
           "basis": "consent",
-          "summary": "LSSI article 21: commercial email needs prior express consent.",
+          "summary": "LSSI article 21.1: commercial email needs a prior request or express consent.",
           "screening": [],
           "existing_customer_exception": true
         },
         "call_company": {
           "basis": "opt_out",
-          "summary": "LGTel article 66: calls can run on legitimate interest. Screen against Lista Robinson and honour objections.",
+          "summary": "LGTel article 66.1(b): calls are allowed with consent or another GDPR article 6.1 basis, such as legitimate interest. Screen against Lista Robinson and honour objections.",
           "screening": ["Lista Robinson"],
           "existing_customer_exception": false
         },
         "call_sole_trader": {
           "basis": "opt_out",
-          "summary": "LGTel article 66: calls can run on legitimate interest. Screen against Lista Robinson and honour objections.",
+          "summary": "LGTel article 66.1(b): calls are allowed with consent or another GDPR article 6.1 basis, such as legitimate interest. Screen against Lista Robinson and honour objections.",
           "screening": ["Lista Robinson"],
           "existing_customer_exception": false
         }
@@ -231,7 +253,11 @@
         {"title": "LSSI (BOE)", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758"},
         {"title": "LGTel (BOE)", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10757"}
       ],
-      "verification": {"level": "unverified", "checked_on": null, "notes": ""}
+      "verification": {
+        "level": "statute",
+        "checked_on": "2026-10-22",
+        "notes": "LSSI article 21.1: consent for email. 21.2: customer exception. LGTel article 66.1(b): calls may rest on another GDPR article 6.1 basis. Lista Robinson screening comes from data protection law and AEPD guidance, not these two articles, and was not checked."
+      }
     }
   }
 }

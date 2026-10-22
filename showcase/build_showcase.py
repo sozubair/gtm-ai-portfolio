@@ -286,6 +286,21 @@ def plays_table(rows: list[dict]) -> str:
     return f"<table class='plays'><tr><th>Play</th><th>Class</th></tr>{''.join(out)}</table>"
 
 
+def verification_summary(rules: dict) -> tuple[int, list[str], str, str]:
+    """Count markets checked against a regulator or statute and name the rest."""
+    markets = rules["countries"].values()
+    total = len(rules["countries"])
+    verified = sum(m["verification"]["level"] in ("regulator", "statute") for m in markets)
+    open_markets = [f"{m['name']} ({m['verification']['level']})" for m in markets
+                    if m["verification"]["level"] not in ("regulator", "statute")]
+    short = f"{verified} of {total} markets verified against source."
+    if open_markets:
+        action = f"Finish checking {', '.join(open_markets)} before launch there."
+    else:
+        action = "Every market is verified against its source. Recheck before each launch."
+    return verified, open_markets, short, action
+
+
 def tile(label: str, value: str, comparison: str, tone: str = "") -> str:
     return (f"<div class='tile {tone}'><div class='tl'>{e(label)}</div>"
             f"<div class='tv'>{e(value)}</div><div class='tc'>{e(comparison)}</div></div>")
@@ -390,7 +405,7 @@ def render(data: dict, fonts: str) -> str:
     ratio_text = f"{ratio:.1f}x" if ratio is not None else "n/a"
     run_once = sum(r["class"] == check.RUN_ONCE for r in rows)
     localise = len(rows) - run_once
-    unverified = sum(m["verification"]["level"] == "unverified" for m in rules["countries"].values())
+    verified, open_markets, verify_short, verify_action = verification_summary(rules)
     drag = draft["biggest_drag"]
     drag_conv = float(regions.loc[drag, "conv_change_pct"])
     drag_leads = float(regions.loc[drag, "leads_change_pct"])
@@ -446,7 +461,7 @@ def render(data: dict, fonts: str) -> str:
     {tile("Incremental value", millions(sim["incremental_value"]),
           f"Sourced claim {millions(sim['sourced_value'])}, {ratio_text} higher.")}
     {tile("Plays that run once for EMEA", f"{run_once} of {len(rows)}",
-          f"{localise} plays need local rules. {unverified} of 6 markets still unverified.")}
+          f"{localise} plays need local rules. {verify_short}")}
     {tile("Week 8 opportunities", num(b["total_now"]),
           f"Four week average {num(b['total_base'], 1)} ({pct(total_change / b['total_base'])}). "
           f"Target {num(weekly_target)}.", "bad" if b["total_now"] < weekly_target else "good")}
@@ -491,7 +506,7 @@ def render(data: dict, fonts: str) -> str:
   {plays_table(rows)}
   {decision(f"Run the {run_once} plays built on consent or existing customers once for EMEA. "
             f"Localise cold email in {', '.join(localise_email)}. "
-            f"Check the source for each market before launch: {unverified} of 6 are still unverified.")}
+            f"{verify_action}")}
   <div class="foot">Green: allowed with an opt out. Yellow: needs a documented reason. Red: needs consent.
   Not legal advice.</div>
 </section>"""

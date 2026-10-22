@@ -61,6 +61,58 @@ class RulesMatchTests(unittest.TestCase):
                     self.assertIn(market["rules"][key]["basis"], check.BASES)
 
 
+class VerifiedRuleTests(unittest.TestCase):
+    """Rules checked against their sources. The first three were changed by that check."""
+
+    def test_ireland_sole_trader_email_is_allowed_under_13_2(self):
+        d = check.check(RULES, "IE", "email", "sole_trader")
+        self.assertEqual(d["basis"], "opt_out")
+        self.assertEqual(d["outcome"], "yes")
+        self.assertIn("13(2)", d["rule"])
+
+    def test_ireland_company_mobile_calls_need_consent_under_13_6(self):
+        self.assertEqual(check.check(RULES, "IE", "call", "company")["outcome"], "yes")
+        d = check.check(RULES, "IE", "call", "company", mobile=True)
+        self.assertEqual(d["basis"], "consent")
+        self.assertEqual(d["outcome"], "no")
+        self.assertEqual(check.check(RULES, "IE", "call", "company", mobile=True,
+                                     consent=True)["outcome"], "yes")
+
+    def test_uk_company_calls_screen_against_tps_and_ctps(self):
+        rule = RULES["countries"]["UK"]["rules"]["call_company"]
+        self.assertEqual(set(rule["screening"]), {"TPS", "CTPS"})
+        d = check.check(RULES, "UK", "call", "company")
+        self.assertIn("Screen against TPS and CTPS", " ".join(d["reasons"]))
+
+    def test_ireland_sole_trader_mobile_calls_need_consent_under_13_6(self):
+        d = check.check(RULES, "IE", "call", "sole_trader", mobile=True)
+        self.assertEqual(d["basis"], "consent")
+        self.assertEqual(d["outcome"], "no")
+
+    def test_netherlands_sole_trader_calls_need_consent_under_11_7_2(self):
+        d = check.check(RULES, "NL", "call", "sole_trader")
+        self.assertEqual(d["basis"], "consent")
+        self.assertEqual(d["outcome"], "no")
+        self.assertIn("11.7(2)", d["rule"])
+
+    def test_spain_company_calls_allowed_on_legitimate_interest_under_66(self):
+        d = check.check(RULES, "ES", "call", "company")
+        self.assertEqual(d["basis"], "opt_out")
+        self.assertEqual(d["outcome"], "yes")
+        self.assertIn("66.1(b)", d["rule"])
+        self.assertIn("legitimate interest", d["rule"])
+
+    def test_verification_levels_match_the_check(self):
+        expected = {"UK": "regulator", "IE": "statute", "DE": "statute", "FR": "partial",
+                    "NL": "statute", "ES": "statute"}
+        for code, level in expected.items():
+            with self.subTest(country=code):
+                v = RULES["countries"][code]["verification"]
+                self.assertEqual(v["level"], level)
+                self.assertTrue(v["notes"])
+        self.assertIn("CNIL guidance not confirmed", RULES["countries"]["FR"]["verification"]["notes"])
+
+
 class BehaviourTests(unittest.TestCase):
     def test_existing_customer_exception(self):
         self.assertEqual(check.check(RULES, "UK", "email", "sole_trader")["outcome"], "no")

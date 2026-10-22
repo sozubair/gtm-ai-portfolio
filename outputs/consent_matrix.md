@@ -5,7 +5,7 @@
 | Play | UK | IE | DE | FR | NL | ES | Class |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | --- |
 | Cold email to target companies | Yes | Yes | No | Yes | No | No | Localise (DE, NL, ES) |
-| Cold email to sole traders | No | No | No | Yes | No | No | Localise (UK, IE, DE, NL, ES) |
+| Cold email to sole traders | No | Yes | No | Yes | No | No | Localise (UK, DE, NL, ES) |
 | Email to companies that opted in | Yes | Yes | Yes | Yes | Yes | Yes | Run once for EMEA |
 | Email to existing sole trader customers | Yes | Yes | Yes | Yes | Yes | Yes | Run once for EMEA |
 | Cold call to company switchboards | Yes | Yes | No | Yes | Yes | Yes | Localise (DE) |
@@ -15,11 +15,11 @@
 
 | Market | Level | Checked |
 | --- | --- | --- |
-| United Kingdom | unverified | not yet |
-| Ireland | unverified | not yet |
-| Germany | unverified | not yet |
-| France | unverified | not yet |
-| Netherlands | unverified | not yet |
-| Spain | unverified | not yet |
+| United Kingdom | regulator | 2026-10-22 |
+| Ireland | statute | 2026-10-22 |
+| Germany | statute | 2026-10-22 |
+| France | partial | 2026-10-22 |
+| Netherlands | statute | 2026-10-22 |
+| Spain | statute | 2026-10-22 |
 
 Not legal advice. Check each source before you rely on a rule.
